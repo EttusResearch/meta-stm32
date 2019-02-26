@@ -27,9 +27,20 @@ Table of Contents
 =================
 
   I. Adding the meta-stm32 layer to your build
+ II. Building a standalone recipe
 
 
 I. Adding the meta-stm32 layer to your build
 =================================================
 
 Run 'bitbake-layers add-layer meta-stm32'
+
+II. Building a standalone recipe
+================================
+
+An example for a standalone recipe is given in the
+
+    recipes-standalone/chromium-ec.bb
+
+recipe. It builds the Chromium-EC firmware for the
+discovery-stm32f072 and nucleo-f411re boards.
