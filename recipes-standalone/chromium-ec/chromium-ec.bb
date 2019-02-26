@@ -8,9 +8,10 @@ SRC_URI = "git://chromium.googlesource.com/chromiumos/platform/ec;protocol=https
           "
 inherit deploy
 
-COMPATIBLE_MACHINE = "discovery-stm32f072"
+COMPATIBLE_MACHINE = "discovery-stm32f072|nucleo-f411re"
 
 CROS_EC_BOARD_discovery-stm32f072 ?= "discovery-stm32f072"
+CROS_EC_BOARD_nucleo-f411re ?= "nucleo-f411re"
 
 PV = "2.3.9999+gitr${SRCPV}"
 
