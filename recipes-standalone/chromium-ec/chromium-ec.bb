@@ -31,7 +31,9 @@ CROS_EC_FIRMWARE_BASE_NAME ?= "${BPN}-${PKGV}-${PKGR}-${MACHINE}-${DATETIME}"
 CROS_EC_FIRMWARE_BASE_NAME[vardepsexclude] = "DATETIME"
 
 do_deploy() {
-	install -m 0644 ${B}/build/${CROS_EC_BOARD}/ec.bin ${DEPLOYDIR}/${CROS_EC_FIRMWARE_BASE_NAME}.bin
-	ln -sf ${CROS_EC_FIRMWARE_BASE_NAME}.bin ${DEPLOYDIR}/${BPN}-${MACHINE}.bin
+    install -m 0644 ${B}/build/${CROS_EC_BOARD}/ec.bin ${DEPLOYDIR}/${CROS_EC_FIRMWARE_BASE_NAME}.bin
+    install -m 0644 ${B}/build/${CROS_EC_BOARD}/RW/ec.RW.bin ${DEPLOYDIR}/${CROS_EC_FIRMWARE_BASE_NAME}.RW.bin
+    ln -sf ${CROS_EC_FIRMWARE_BASE_NAME}.bin ${DEPLOYDIR}/${BPN}-${MACHINE}.bin
+    ln -sf ${CROS_EC_FIRMWARE_BASE_NAME}.RW.bin ${DEPLOYDIR}/${BPN}-${MACHINE}.RW.bin
 }
 addtask deploy before do_build after do_install
