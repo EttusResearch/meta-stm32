@@ -27,8 +27,8 @@ do_install() {
     :
 }
 
-CROS_EC_FIRMWARE_BASE_NAME ?= "${BPN}-${PKGV}-${PKGR}-${MACHINE}-${DATETIME}"
-CROS_EC_FIRMWARE_BASE_NAME[vardepsexclude] = "DATETIME"
+CROS_EC_FIRMWARE_BASE_NAME ?= "${BPN}-${PKGV}-${PKGR}-${MACHINE}${IMAGE_VERSION_SUFFIX}"
+CROS_EC_FIRMWARE_BASE_NAME[vardepsexclude] = "IMAGE_VERSION_SUFFIX"
 
 do_deploy() {
     install -m 0644 ${B}/build/${CROS_EC_BOARD}/ec.bin ${DEPLOYDIR}/${CROS_EC_FIRMWARE_BASE_NAME}.bin
