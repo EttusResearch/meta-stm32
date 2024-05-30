@@ -4,20 +4,22 @@ LICENSE = "BSD-3-Clause"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=562c740877935f40b262db8af30bca36"
 
 SRCREV = "0fa2513fc1c5c3c328e617c1593435a97d109d6f"
-SRC_URI = "git://chromium.googlesource.com/chromiumos/platform/ec;protocol=https \
+SRC_URI = "git://chromium.googlesource.com/chromiumos/platform/ec;protocol=https;branch=master \
+           file://0001-Makefile.toolchain-ignore-stringop-overread-warning.patch \
           "
 inherit deploy
 
 COMPATIBLE_MACHINE = "discovery-stm32f072|nucleo-f411re"
 
-CROS_EC_BOARD_discovery-stm32f072 ?= "discovery-stm32f072"
-CROS_EC_BOARD_nucleo-f411re ?= "nucleo-f411re"
+CROS_EC_BOARD:discovery-stm32f072 ?= "discovery-stm32f072"
+CROS_EC_BOARD:nucleo-f411re ?= "nucleo-f411re"
 
 PV = "2.3.9999+gitr${SRCPV}"
 
 S = "${WORKDIR}/git"
 
 EXTRA_OEMAKE = "'CROSS_COMPILE=arm-oe-eabi-' 'PKG_CONFIG=pkg-config-native'"
+BUILD_CFLAGS += "-Wno-error=stringop-overread"
 
 do_compile() {
     oe_runmake BOARD=${CROS_EC_BOARD}
