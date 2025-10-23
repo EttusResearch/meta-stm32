@@ -1,0 +1,30 @@
+From feae7b2fa8574a1baa2f69a058292f4df29c103b Mon Sep 17 00:00:00 2001
+From: Joerg Hofrichter <joerg.hofrichter@emerson.com>
+Date: Thu, 23 Oct 2025 08:55:44 +0000
+Subject: [PATCH] =?UTF-8?q?ignore=20reprecation=20warning=20"=E2=80=98ftdi?=
+ =?UTF-8?q?=5Fusb=5Fpurge=5Fbuffers=E2=80=99=20is=20deprecated"?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+---
+ Makefile.toolchain | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.toolchain b/Makefile.toolchain
+index b5c80d91e..607efb596 100644
+--- a/Makefile.toolchain
++++ b/Makefile.toolchain
+@@ -37,7 +37,8 @@ C_WARN = -Wstrict-prototypes -Wdeclaration-after-statement -Wno-pointer-sign
+ COMMON_WARN = -Wall -Werror -Wundef -Wno-trigraphs -fno-strict-aliasing \
+ 	-fno-common -Werror-implicit-function-declaration \
+ 	-Wno-stringop-overread -Wno-address-of-packed-member \
+-	-Wno-format-security -fno-strict-overflow
++	-Wno-format-security -fno-strict-overflow \
++	-Wno-deprecated-declarations
+ CFLAGS_WARN = $(COMMON_WARN) $(C_WARN)
+ CXXFLAGS_WARN = $(COMMON_WARN)
+ CFLAGS_DEBUG= -g
+-- 
+2.39.5
+

@@ -6,6 +6,7 @@ LIC_FILES_CHKSUM = "file://LICENSE;md5=562c740877935f40b262db8af30bca36"
 SRCREV = "0fa2513fc1c5c3c328e617c1593435a97d109d6f"
 SRC_URI = "git://chromium.googlesource.com/chromiumos/platform/ec;protocol=https;branch=master \
            file://0001-Makefile.toolchain-ignore-stringop-overread-warning.patch \
+           file://0002-ignore-reprecation-warning-ftdi_usb_purge_buffers-is.patch \
           "
 inherit deploy
 
